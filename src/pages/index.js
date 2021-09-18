@@ -1,24 +1,24 @@
 /* eslint-disable no-unused-vars */
-import Home from './containers/Home';
-import About from './containers/About';
-import Team from './containers/Team';
-import FAQs from './containers/FAQs';
-import Game from './containers/Game';
-import Wrapper from './components/Wrapper';
-import Navbar from './components/Navbar';
-import { AppSocial, BlackScreen } from './App.style';
+import '../index.css';
+import Home from '../containers/Home';
+import About from '../containers/About';
+import Team from '../containers/Team';
+import FAQs from '../containers/FAQs';
+import Game from '../containers/Game';
+import Wrapper from '../components/Wrapper';
+import Navbar from '../components/Navbar';
+import { AppSocial, BlackScreen } from '../App.style';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { Helmet } from 'react-helmet';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const scrollHeightMultiplier = 6;
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-    (/Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 0); // iPadOS (the only official Mac with touchscreen)
 
 const App = () => {
   const [timeline, setTimeline] = useState(null);
@@ -28,6 +28,7 @@ const App = () => {
   const [scrollTriggerInstance, setScrollTriggerInstance] = useState(null);
   const wrapperRef = useRef(null);
   const blackScreenRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
   const dataRef = useRef({
     isProgressing: false,
     pageIndex,
@@ -74,6 +75,9 @@ const App = () => {
   }, [pageIndex]);
 
   useEffect(() => {
+    setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+    (/Macintosh/i.test(navigator.userAgent) && navigator.maxTouchPoints > 0)); // iPadOS (the only official Mac with touchscreen)
+
     const wrapper = wrapperRef.current;
     const blackScreen = blackScreenRef.current;
     const targets = wrapper.childNodes;
@@ -264,6 +268,35 @@ const App = () => {
 
   return (
     <>
+      <Helmet>
+        <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png" />
+        <link rel="icon" type="image/png" sizes="192x192"  href="/icons/android-icon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta
+          name="description"
+          content="Website of SIT - Hello World 2021"
+        />
+        <link rel="apple-touch-icon" href="/logo192.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta
+          name="description"
+          content="Website of SIT - Hello World 2021"
+        />
+        <title>SIT Hello World 2021</title>
+      </Helmet>
       <Wrapper ref={wrapperRef}>
         <Home isMobile={isMobile} pageIndex={pageIndex} />
         <About in={isAboutEntered} />

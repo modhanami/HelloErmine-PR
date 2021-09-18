@@ -11,20 +11,24 @@
     "@testing-library/user-event": "^12.1.10",
     "animejs": "^3.2.1",
     "bootstrap": "3",
+    "gatsby": "^3.14.0",
+    "gatsby-plugin-manifest": "^3.14.0",
+    "gatsby-plugin-react-helmet": "^4.14.0",
     "gsap": "^3.7.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
     "react-hamburger-menu": "^1.2.1",
+    "react-helmet": "^6.1.0",
     "react-scripts": "^4.0.3",
     "react-tsparticles": "^1.34.0",
     "styled-components": "^5.3.0",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "gatsby developgatsby develop",
+    "build": "gatsby build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
@@ -49,7 +53,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
+    "babel-plugin-styled-components": "^1.13.2",
     "eslint": "^7.32.0",
-    "eslint-plugin-react": "^7.24.0"
+    "eslint-plugin-react": "^7.24.0",
+    "gatsby-plugin-styled-components": "^4.14.0"
   }
 }
